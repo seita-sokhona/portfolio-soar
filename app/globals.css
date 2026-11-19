@@ -24,3 +24,46 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+/* ===== Logo Soar animé (composant LogoAnime) ===== */
+.logo-eleve {
+  animation: logo-eleve 3.2s cubic-bezier(.33, 0, .2, 1) both;
+}
+.logo-ailes {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: logo-ailes 1.4s ease-in-out 2 both;
+}
+@keyframes logo-eleve {
+  0%   { opacity: 0; transform: translateY(140px) scale(.85); }
+  20%  { opacity: 1; }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes logo-ailes {
+  0%, 100% { transform: scaleX(1); }
+  50%      { transform: scaleX(.75); }
+}
+/* Respect des personnes qui ont désactivé les animations sur leur appareil */
+@media (prefers-reduced-motion: reduce) {
+  .logo-eleve, .logo-ailes { animation: none; }
+}
+/* ===== Apparition progressive du contenu ===== */
+.apparait {
+  opacity: 0;
+  animation: apparait 0.9s ease-out both;
+}
+.delai-1 { animation-delay: 1.6s; }
+.delai-2 { animation-delay: 1.9s; }
+.delai-3 { animation-delay: 2.2s; }
+.delai-4 { animation-delay: 2.5s; }
+
+
+@keyframes apparait {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .apparait { animation: none; opacity: 1; }
+}
